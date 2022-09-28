@@ -1,4 +1,4 @@
-package com.example.thuggeelya.db;
+package com.example.thuggeelya.data;
 
 import com.example.thuggeelya.repositories.User;
 import lombok.Getter;
@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Order {
 
     @Id
@@ -40,14 +41,4 @@ public class Order {
             ))
     @ToString.Exclude
     private final List<Goody> goodies = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "idorder=" + idorder +
-                ", user=" + user +
-                ", creationdate=" + creationdate +
-                ", editdate=" + editdate +
-                '}';
-    }
 }

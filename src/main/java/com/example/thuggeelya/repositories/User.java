@@ -1,19 +1,37 @@
 package com.example.thuggeelya.repositories;
 
-import com.example.thuggeelya.db.Order;
+import com.example.thuggeelya.data.Activity;
+import com.example.thuggeelya.data.Order;
+import com.example.thuggeelya.data.Role;
 import lombok.Getter;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Entity
 @Table(name = "user")
+@ToString
 public class User {
 
+    @OneToMany(mappedBy = "idorder")
+    @ToString.Exclude
+    private final List<Order> orders = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "useractivity",
+            joinColumns = @JoinColumn(
+                    name = "iduser",
+                    referencedColumnName = "iduser"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "idactivity",
+                    referencedColumnName = "idactivity"
+            ))
+    @ToString.Exclude
+    private final List<Activity> activities = new ArrayList<>();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser")
@@ -23,12 +41,22 @@ public class User {
     private String lastname;
     private String name;
     private String patronymic;
-
     private String phone;
-
-    @OneToMany(mappedBy = "idorder")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Transient
     @ToString.Exclude
-    private final List<Order> orders = new ArrayList<>();
+    @JoinTable(
+            name = "userrole",
+            joinColumns = @JoinColumn(
+                    name = "iduser",
+                    referencedColumnName = "iduser"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "idrole",
+                    referencedColumnName = "idrole"
+            )
+    )
+    private Set<Role> roles;
 
     public User() {
     }
@@ -40,24 +68,5 @@ public class User {
         patronymic = "";
         balance = 100;
         phone = "";
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("id=").append(iduser);
-        sb.append(", email='").append(email).append("'");
-        sb.append(", lastName='").append(lastname).append("'");
-        sb.append(", name='").append(name).append("'");
-        sb.append(", patronymic='").append(patronymic).append("'");
-        sb.append(", balance='").append(balance).append("'");
-        sb.append(", phone='").append(phone).append("'");
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(iduser, email);
     }
 }

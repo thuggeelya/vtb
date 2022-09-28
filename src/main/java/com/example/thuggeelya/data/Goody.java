@@ -1,4 +1,4 @@
-package com.example.thuggeelya.db;
+package com.example.thuggeelya.data;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,11 +7,11 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Goody {
 
     @Id
@@ -33,20 +33,4 @@ public class Goody {
             ))
     @ToString.Exclude
     private final List<Order> orders = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Goody{");
-        sb.append("id=").append(idgoody);
-        sb.append(", name='").append(name).append("'");
-        sb.append(", price='").append(price).append("'");
-        sb.append(", description='").append(description).append("'");
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idgoody, name);
-    }
 }
