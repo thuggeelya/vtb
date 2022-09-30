@@ -1,16 +1,17 @@
 package com.example.thuggeelya.data;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-@ToString
-@Getter
+@Data
 @NoArgsConstructor
-public class UserActivityKey {
+public class UserActivityKey implements Serializable {
 
     private Integer iduser;
     private Integer idactivity;

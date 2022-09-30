@@ -18,7 +18,7 @@ public class Payment {
     private Integer idpayment;
 
     @OneToOne
-    @JoinColumn(name = "order")
+    @JoinColumn(name = "idorder")
     private Order order;
 
     @Temporal(TemporalType.TIMESTAMP)

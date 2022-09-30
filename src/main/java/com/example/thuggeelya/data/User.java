@@ -1,4 +1,4 @@
-package com.example.thuggeelya.repositories;
+package com.example.thuggeelya.data;
 
 import com.example.thuggeelya.data.Activity;
 import com.example.thuggeelya.data.Order;
