@@ -14,13 +14,6 @@ import java.util.List;
 @ToString
 public class Goody {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idgoody;
-    private String description;
-    private String name;
-    private Integer price;
-
     @ManyToMany
     @JoinTable(name = "ordergoody",
             joinColumns = @JoinColumn(
@@ -33,4 +26,10 @@ public class Goody {
             ))
     @ToString.Exclude
     private final List<Order> orders = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idgoody;
+    private String description;
+    private String name;
+    private Integer price;
 }

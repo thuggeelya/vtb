@@ -27,7 +27,7 @@ public class LoginFormService implements UserDetailsService {
     }
 
     public LoginForm getByLogin(String login) {
-        return this.repository.findByLogin(login);
+        return this.repository.findByLogin(login).orElse(null);
     }
 
     @Override

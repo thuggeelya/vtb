@@ -15,19 +15,6 @@ import java.util.List;
 @ToString
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idorder;
-
-    @ManyToOne
-    @JoinColumn(name = "iduser")
-    private User user;
-
-    @Temporal(TemporalType.DATE)
-    private Date creationdate;
-    @Temporal(TemporalType.DATE)
-    private Date editdate;
-
     @ManyToMany
     @JoinTable(name = "ordergoody",
             joinColumns = @JoinColumn(
@@ -40,4 +27,14 @@ public class Order {
             ))
     @ToString.Exclude
     private final List<Goody> goodies = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idorder;
+    @ManyToOne
+    @JoinColumn(name = "iduser")
+    private User user;
+    @Temporal(TemporalType.DATE)
+    private Date creationdate;
+    @Temporal(TemporalType.DATE)
+    private Date editdate;
 }

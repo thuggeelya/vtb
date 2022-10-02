@@ -15,25 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Activity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idactivity;
-    private String name;
-    private String reward;
-    private String description;
-
-    @Temporal(TemporalType.DATE)
-    private Date startdate;
-    @Temporal(TemporalType.DATE)
-    private Date finishdate;
-
-    @ManyToOne
-    @JoinColumn(name = "idactivitytype")
-    private ActivityType type;
-    @ManyToOne
-    @JoinColumn(name = "idactivitystatus")
-    private ActivityStatus status;
-
     @ManyToMany
     @JoinTable(name = "useractivity",
             joinColumns = @JoinColumn(
@@ -46,4 +27,20 @@ public class Activity {
             ))
     @ToString.Exclude
     private final List<User> users = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idactivity;
+    private String name;
+    private String reward;
+    private String description;
+    @Temporal(TemporalType.DATE)
+    private Date startdate;
+    @Temporal(TemporalType.DATE)
+    private Date finishdate;
+    @ManyToOne
+    @JoinColumn(name = "idactivitytype")
+    private ActivityType type;
+    @ManyToOne
+    @JoinColumn(name = "idactivitystatus")
+    private ActivityStatus status;
 }

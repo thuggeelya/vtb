@@ -9,5 +9,6 @@ import java.util.Collection;
 @RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, Integer> {
     Collection<User> findByIduser(@Param("id") Integer id);
+
     Collection<User> findByEmail(@Param("email") String email);
 }

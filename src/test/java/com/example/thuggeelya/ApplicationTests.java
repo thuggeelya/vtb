@@ -1,10 +1,10 @@
-package com.example.diploma_spring;
+package com.example.thuggeelya;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DiplomaSpringApplicationTests {
+class ApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,8 +1,5 @@
 package com.example.thuggeelya.data;
 
-import com.example.thuggeelya.data.Activity;
-import com.example.thuggeelya.data.Order;
-import com.example.thuggeelya.data.Role;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -42,6 +39,7 @@ public class User {
     private String name;
     private String patronymic;
     private String phone;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @Transient
     @ToString.Exclude
