@@ -52,7 +52,7 @@ public class RestService {
         return activityRepository.findByNameContaining(searchWord, nextPage);
     }
 
-    public List<User> getActivityParticipants(@NotNull Activity activity) {
-        return activity.getUsers();
+    public List<User> getActivityParticipantsById(@NotNull Integer id) {
+        return activityRepository.findById(id).orElseThrow().getUsers();
     }
 }

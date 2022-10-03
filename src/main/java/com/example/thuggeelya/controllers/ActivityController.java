@@ -1,10 +1,11 @@
 package com.example.thuggeelya.controllers;
 
-import com.example.thuggeelya.data.Activity;
 import com.example.thuggeelya.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/activities")
@@ -26,9 +27,13 @@ public class ActivityController {
                 ResponseEntity.ok(service.getPageOfSearchResultActivities(searchWord, offset, limit).getContent());
     }
 
-    @GetMapping("/participants")
+    @GetMapping("/{id}/participants")
     public ResponseEntity<?>
-    getActivityParticipants(@RequestParam("activity") Activity activity) {
-        return ResponseEntity.ok(service.getActivityParticipants(activity));
+    getActivityParticipants(@PathVariable Integer id) {
+        try {
+            return ResponseEntity.ok(service.getActivityParticipantsById(id));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

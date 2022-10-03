@@ -1,5 +1,7 @@
 package com.example.thuggeelya.data;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -39,12 +41,18 @@ public class User {
     private String name;
     private String patronymic;
     private String phone;
-    private String position;
 
+    @JsonManagedReference
     @ManyToOne
     @Transient
     @JoinColumn(name = "idmanager")
     private Manager manager;
+
+    @JsonBackReference
+    @OneToOne
+    @Transient
+    @JoinColumn(name = "iduser")
+    private LoginForm loginForm;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @Transient
@@ -72,6 +80,5 @@ public class User {
         patronymic = "";
         balance = 100;
         phone = "";
-        position = "";
     }
 }

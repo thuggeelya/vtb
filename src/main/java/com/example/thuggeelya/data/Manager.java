@@ -1,5 +1,7 @@
 package com.example.thuggeelya.data;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Manager {
     @Column(name = "idmanager", nullable = false)
     private Integer idmanager;
 
+    @JsonBackReference
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idmanager", nullable = false)

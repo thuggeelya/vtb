@@ -1,13 +1,17 @@
 package com.example.thuggeelya.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -19,8 +23,22 @@ public class LoginForm implements Serializable {
     private String login;
     private String password;
 
+    @JsonManagedReference
     @OneToOne
     @Transient
     @JoinColumn(name = "iduser")
     private User user;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        LoginForm loginForm = (LoginForm) o;
+        return iduser != null && Objects.equals(iduser, loginForm.iduser);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
