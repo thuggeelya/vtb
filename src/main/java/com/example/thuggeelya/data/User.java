@@ -39,6 +39,12 @@ public class User {
     private String name;
     private String patronymic;
     private String phone;
+    private String position;
+
+    @ManyToOne
+    @Transient
+    @JoinColumn(name = "idmanager")
+    private Manager manager;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @Transient
@@ -66,5 +72,6 @@ public class User {
         patronymic = "";
         balance = 100;
         phone = "";
+        position = "";
     }
 }
