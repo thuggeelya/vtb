@@ -19,21 +19,18 @@ public class MainInfoController {
     }
 
     @GetMapping("/activities")
-    public ResponseEntity<?>
-    getAllActivitiesPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
-        return ResponseEntity.ok(service.getPageOfActivities(offset, limit).getContent());
+    public ResponseEntity<?> getAllActivities() {
+        return ResponseEntity.ok(service.getActivities());
     }
 
     @GetMapping("/activities/further")
-    public ResponseEntity<?>
-    getFurtherActivitiesPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
-        return ResponseEntity.ok(service.getPageOfFurtherActivities(offset, limit).getContent());
+    public ResponseEntity<?> getFurtherActivities() {
+        return ResponseEntity.ok(service.getFurtherActivities());
     }
 
     @GetMapping("/activities/current")
-    public ResponseEntity<?>
-    getCurrentActivitiesPage(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
-        return ResponseEntity.ok(service.getPageOfCurrentActivities(offset, limit).getContent());
+    public ResponseEntity<?> getCurrentActivities() {
+        return ResponseEntity.ok(service.getCurrentActivities());
     }
 
     @GetMapping("/activities/{id}/participants")

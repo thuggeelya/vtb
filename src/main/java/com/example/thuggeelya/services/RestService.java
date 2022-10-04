@@ -22,34 +22,28 @@ public class RestService {
         this.activityRepository = activityRepository;
     }
 
-    public Page<Goody> getPageOfGoodies(Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return goodyRepository.findAll(nextPage);
+    public List<Goody> getGoodies() {
+        return goodyRepository.findAll();
     }
 
-    public Page<Activity> getPageOfActivities(Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return activityRepository.findAll(nextPage);
+    public List<Activity> getActivities() {
+        return activityRepository.findAll();
     }
 
-    public Page<Activity> getPageOfFurtherActivities(Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.FURTHER.getId(), nextPage);
+    public List<Activity> getFurtherActivities() {
+        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.FURTHER.getId());
     }
 
-    public Page<Activity> getPageOfPassedActivities(Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.PASSED.getId(), nextPage);
+    public List<Activity> getPassedActivities() {
+        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.PASSED.getId());
     }
 
-    public Page<Activity> getPageOfCurrentActivities(Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.CURRENT.getId(), nextPage);
+    public List<Activity> getCurrentActivities() {
+        return activityRepository.findAllByActivityStatusId(ActivityStatusEnum.CURRENT.getId());
     }
 
-    public Page<Activity> getPageOfSearchResultActivities(String searchWord, Integer offset, Integer limit) {
-        Pageable nextPage = PageRequest.of(offset, limit);
-        return activityRepository.findByNameContaining(searchWord, nextPage);
+    public List<Activity> getSearchResultActivities(String searchWord) {
+        return activityRepository.findByNameContaining(searchWord);
     }
 
     public List<User> getActivityParticipantsById(@NotNull Integer id) {

@@ -20,11 +20,10 @@ public class ActivityController {
 
     @GetMapping(value = {"/search/{searchWord}", "/search"})
     public ResponseEntity<?>
-    getActivitiesBySearch(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit,
-                          @PathVariable(value = "searchWord", required = false) String searchWord) {
+    getActivitiesBySearch(@PathVariable(value = "searchWord", required = false) String searchWord) {
         return searchWord == null ?
-                ResponseEntity.ok(service.getPageOfActivities(offset, limit).getContent()) :
-                ResponseEntity.ok(service.getPageOfSearchResultActivities(searchWord, offset, limit).getContent());
+                ResponseEntity.ok(service.getActivities()) :
+                ResponseEntity.ok(service.getSearchResultActivities(searchWord));
     }
 
     @GetMapping("/{id}/participants")

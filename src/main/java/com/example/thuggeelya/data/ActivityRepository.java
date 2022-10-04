@@ -16,12 +16,12 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
     List<Activity> findAllByNameContaining(@Param("name") String name);
 
     @Query("select a from Activity a where a.type.typename = :type")
-    Page<Activity> findAllByActivityTypeName(@Param("type") String type, Pageable nextPage);
+    List<Activity> findAllByActivityTypeName(@Param("type") String type);
 
     @Query("select a from Activity a where a.status.idactivitystatus = :idactivitystatus")
-    Page<Activity> findAllByActivityStatusId(@Param("idactivitystatus") Integer idactivitystatus, Pageable nextPage);
+    List<Activity> findAllByActivityStatusId(@Param("idactivitystatus") Integer idactivitystatus);
 
-    Page<Activity> findByNameContaining(@Param("name") String name, Pageable nextPage);
+    List<Activity> findByNameContaining(@Param("name") String name);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @NotNull

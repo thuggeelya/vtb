@@ -19,8 +19,7 @@ public class ShopController {
     }
 
     @GetMapping("/goodies")
-    public @ResponseBody
-    List<Goody> getGoodies(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
-        return service.getPageOfGoodies(offset, limit).getContent();
+    public @ResponseBody List<Goody> getGoodies() {
+        return service.getGoodies();
     }
 }
