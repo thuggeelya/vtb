@@ -37,6 +37,7 @@ public class JwtTokenRepository implements CsrfTokenRepository {
                 .atZone(ZoneId.systemDefault()).toInstant());
 
         String token = "";
+
         try {
             token = Jwts.builder()
                     .setId(id)
@@ -49,7 +50,8 @@ public class JwtTokenRepository implements CsrfTokenRepository {
             e.printStackTrace();
             //ignore
         }
-        return new DefaultCsrfToken("x-csrf-token", "_csrf", token);
+
+        return new DefaultCsrfToken("x-csrf-token", "token", token);
     }
 
     @Override
