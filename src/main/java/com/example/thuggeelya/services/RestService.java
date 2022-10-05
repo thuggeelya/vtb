@@ -41,7 +41,7 @@ public class RestService {
     }
 
     public List<Activity> getSearchResultActivities(String searchWord) {
-        return activityRepository.findByNameContaining(searchWord);
+        return activityRepository.findAllByNameContaining(searchWord);
     }
 
     public List<User> getActivityParticipantsById(@NotNull Integer id) {

@@ -91,12 +91,12 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="localhost" />
+          <host value="sql8.freesqldatabase.com" />
           <port value="3306" />
-          <database value="vtb" />
+          <database value="sql8524150" />
           <type value="USER_PASSWORD" />
-          <user value="root" />
-          <deprecated-pwd value="" />
+          <user value="sql8524150" />
+          <deprecated-pwd value="bGlOQjE5cFNLNA==" />
         </database>
         <properties>
           <auto-commit value="false" />

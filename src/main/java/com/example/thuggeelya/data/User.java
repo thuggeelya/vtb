@@ -31,6 +31,7 @@ public class User {
             ))
     @ToString.Exclude
     private final List<Activity> activities = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser")

@@ -34,9 +34,9 @@ public class Activity {
     private String reward;
     private String description;
     @Temporal(TemporalType.DATE)
-    private Date startdate;
+    private Date datestart;
     @Temporal(TemporalType.DATE)
-    private Date finishdate;
+    private Date datefinish;
     @ManyToOne
     @JoinColumn(name = "idactivitytype")
     private ActivityType type;
