@@ -71,12 +71,16 @@ public class AdminController {
     }
 
     @GetMapping("/transactions")
-    public ResponseEntity<?>
-    getAllTransactions(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
-        return ResponseEntity.ok(adminService.getPageOfTransactions(offset, limit).getContent());
+    public ResponseEntity<?> getAllTransactions() {
+        return ResponseEntity.ok(adminService.getTransactions());
     }
 
-    @GetMapping("/{id}/transactions")
+    @GetMapping("/users")
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(adminService.getUsers());
+    }
+
+    @GetMapping("/users/{id}/transactions")
     public ResponseEntity<?> getUserTransactionsBySenderId(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getUserTransactionsBySenderId(id));
     }

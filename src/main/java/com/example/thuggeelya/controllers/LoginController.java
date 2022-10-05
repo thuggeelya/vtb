@@ -24,7 +24,7 @@ public class LoginController {
         this.service = service;
     }
 
-    @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/login")
     public @ResponseBody
     LoginForm getAuthUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -35,6 +35,7 @@ public class LoginController {
 
         Object principal = auth.getPrincipal();
         LoginForm loginForm = (principal instanceof LoginForm) ? (LoginForm) principal : null;
+        System.out.println(loginForm);
         return Objects.nonNull(loginForm) ? this.service.getByLogin(loginForm.getLogin()) : null;
     }
 }

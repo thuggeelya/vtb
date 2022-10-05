@@ -22,4 +22,6 @@ public class ShopController {
     public @ResponseBody List<Goody> getGoodies() {
         return service.getGoodies();
     }
+
+    // TODO: buy(List<Goody>): check balance, create order and 'order goody's, create payment, check balance
 }

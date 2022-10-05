@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -69,7 +70,7 @@ public class User {
                     referencedColumnName = "idrole"
             )
     )
-    private Set<Role> roles;
+    private final Set<Role> roles = new HashSet<>();
 
     public User() {
     }

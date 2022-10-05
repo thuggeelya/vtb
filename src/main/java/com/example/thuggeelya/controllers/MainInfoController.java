@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @RestController
+@RequestMapping("/info")
 public class MainInfoController {
 
     private final RestService service;
@@ -18,22 +19,22 @@ public class MainInfoController {
         this.service = service;
     }
 
-    @GetMapping(path = "/info/activities", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/activities")
     public ResponseEntity<?> getAllActivities() {
         return ResponseEntity.ok(service.getActivities());
     }
 
-    @GetMapping(path = "/info/activities/further", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/activities/further")
     public ResponseEntity<?> getFurtherActivities() {
         return ResponseEntity.ok(service.getFurtherActivities());
     }
 
-    @GetMapping(path = "/info/activities/current", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/activities/current")
     public ResponseEntity<?> getCurrentActivities() {
         return ResponseEntity.ok(service.getCurrentActivities());
     }
 
-    @GetMapping(path = "/info/activities/{id}/participants", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/activities/{id}/participants")
     public ResponseEntity<?>
     getActivityParticipants(@PathVariable Integer id) {
         try {
