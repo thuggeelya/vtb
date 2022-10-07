@@ -1,88 +1,218 @@
 package com.example.thuggeelya.data;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
 @Entity
-@Table(name = "user")
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
+@Table(name = "user")
 public class User {
-
-    @OneToMany(mappedBy = "idorder")
-    @Transient
-    @ToString.Exclude
-    private final List<Order> orders = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "useractivity",
-            joinColumns = @JoinColumn(
-                    name = "iduser",
-                    referencedColumnName = "iduser"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "idactivity",
-                    referencedColumnName = "idactivity"
-            ))
-    @ToString.Exclude
-    private final List<Activity> activities = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Transient
-    @ToString.Exclude
-    @JoinTable(
-            name = "userrole",
-            joinColumns = @JoinColumn(
-                    name = "iduser",
-                    referencedColumnName = "iduser"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "idrole",
-                    referencedColumnName = "idrole"
-            )
-    )
-    private Set<Role> roles;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iduser")
+    @Column(name = "iduser", nullable = false)
     private Integer iduser;
-    private String email;
-    private Integer balance;
-    private String lastname;
-    private String name;
-    private String patronymic;
-    private String phone;
-    @Nullable
-    @Temporal(TemporalType.DATE)
-    private Date datebalancing;
-    @JsonManagedReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Transient
-    @JoinColumn(name = "idmanager")
-    private Manager manager;
-    @JsonBackReference
-    @OneToOne(fetch = FetchType.EAGER)
-    @Transient
-    @JoinColumn(name = "iduser")
-    private LoginForm loginForm;
 
-    public User() {
+    @Column(name = "lastname", nullable = false, length = 45)
+    private String lastname;
+
+    @Column(name = "name", nullable = false, length = 45)
+    private String name;
+
+    @Column(name = "patronymic", length = 45)
+    private String patronymic;
+
+    @Column(name = "email", nullable = false, length = 45)
+    private String email;
+
+    @Column(name = "phone", nullable = false, length = 45)
+    private String phone;
+
+    @Column(name = "balance", nullable = false)
+    private Integer balance;
+
+    @Column(name = "datebalancing", nullable = true)
+    private LocalDate datebalancing;
+
+    @OneToMany(mappedBy = "accepter")
+    @ToString.Exclude
+    private Set<Transaction> transactionsAsAccepter = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "sender")
+    @ToString.Exclude
+    private Set<Transaction> transactionsAsSender = new LinkedHashSet<>();
+
+    @JsonSerialize
+    @Transient
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    @ToString.Exclude
+    private LoginForm loginform;
+
+    @ManyToMany
+    @JoinTable(name = "userrole",
+            joinColumns = @JoinColumn(name = "iduser"),
+            inverseJoinColumns = @JoinColumn(name = "idrole"))
+    @ToString.Exclude
+    private Set<Role> roles = new LinkedHashSet<>();
+
+    @JsonManagedReference
+    @ManyToMany
+    @Transient
+    @JoinTable(name = "useractivity",
+            joinColumns = @JoinColumn(name = "iduser"),
+            inverseJoinColumns = @JoinColumn(name = "idactivity"))
+    @ToString.Exclude
+    private Set<Activity> activities = new LinkedHashSet<>();
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private Set<Order> orders = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "manager",
+            joinColumns = @JoinColumn(name = "idmanager"),
+            inverseJoinColumns = @JoinColumn(name = "iduser"))
+    @ToString.Exclude
+    private Set<User> users = new LinkedHashSet<>();
+
+    @ManyToMany
+    @JoinTable(name = "manager",
+            joinColumns = @JoinColumn(name = "iduser"),
+            inverseJoinColumns = @JoinColumn(name = "idmanager"))
+    @ToString.Exclude
+    private Set<User> users2 = new LinkedHashSet<>();
+
+    public Set<User> getUsers2() {
+        return users2;
     }
 
-    public User(String email) {
+    public void setUsers2(Set<User> users2) {
+        this.users2 = users2;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @JsonIgnore
+    @JsonBackReference
+    public LoginForm getLoginform() {
+        return loginform;
+    }
+
+    public void setLoginform(LoginForm loginform) {
+        this.loginform = loginform;
+    }
+
+    public Set<Transaction> getTransactionsAsSender() {
+        return transactionsAsSender;
+    }
+
+    public void setTransactionsAsSender(Set<Transaction> transactionsAsSender) {
+        this.transactionsAsSender = transactionsAsSender;
+    }
+
+    public Set<Transaction> getTransactionsAsAccepter() {
+        return transactionsAsAccepter;
+    }
+
+    public void setTransactionsAsAccepter(Set<Transaction> transactionsAsAccepter) {
+        this.transactionsAsAccepter = transactionsAsAccepter;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
-        lastname = "";
-        name = "";
-        patronymic = "";
-        balance = 100;
-        phone = "";
-        datebalancing = null;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public Integer getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(Integer iduser) {
+        this.iduser = iduser;
     }
 }
