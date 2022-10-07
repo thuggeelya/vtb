@@ -23,11 +23,13 @@ public class AccountController {
 
     public final LoginFormService loginFormService;
     public final ActivityRepository activityRepository;
+    public final UserRepository userRepository;
 
     @Autowired
-    public AccountController(LoginFormService loginFormService, ActivityRepository activityRepository) {
+    public AccountController(LoginFormService loginFormService, ActivityRepository activityRepository, UserRepository userRepository) {
         this.loginFormService = loginFormService;
         this.activityRepository = activityRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -35,7 +37,11 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return ResponseEntity.ok(loginFormService.getByLogin(authentication.getName()).getUser());
+            return ResponseEntity.ok(
+                    userRepository.findByIduser(loginFormService
+                                    .getByLogin(authentication.getName())
+                                    .getIduser()).get()
+            );
         }
 
         return ResponseEntity.noContent().build();
@@ -48,7 +54,9 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return loginFormService.getByLogin(authentication.getName()).getUser().getOrders();
+            return userRepository.findByIduser(loginFormService
+                    .getByLogin(authentication.getName())
+                    .getIduser()).get().getOrders();
         }
 
         return orders;
@@ -61,7 +69,9 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return loginFormService.getByLogin(authentication.getName()).getUser().getActivities();
+            return userRepository.findByIduser(loginFormService
+                    .getByLogin(authentication.getName())
+                    .getIduser()).get().getActivities();
         }
 
         return activities;
@@ -74,7 +84,10 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return loginFormService.getByLogin(authentication.getName()).getUser().getActivities()
+            return userRepository.findByIduser(loginFormService
+                    .getByLogin(authentication.getName())
+                    .getIduser()).get()
+                    .getActivities()
                     .stream()
                     .filter(a -> a.getStatus().getIdactivitystatus().equals(ActivityStatusEnum.CURRENT.getId()))
                     .collect(Collectors.toList());

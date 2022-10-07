@@ -16,6 +16,7 @@ import java.util.*;
 public class User {
 
     @OneToMany(mappedBy = "idorder")
+    @Transient
     @ToString.Exclude
     private final List<Order> orders = new ArrayList<>();
     @ManyToMany
@@ -44,7 +45,7 @@ public class User {
                     referencedColumnName = "idrole"
             )
     )
-    private final Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser")

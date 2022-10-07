@@ -16,6 +16,7 @@ import java.util.List;
 public class Activity {
 
     @ManyToMany
+    @Transient
     @JoinTable(name = "useractivity",
             joinColumns = @JoinColumn(
                     name = "idactivity",

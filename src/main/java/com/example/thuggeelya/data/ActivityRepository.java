@@ -22,9 +22,9 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 
     List<Activity> findAllByNameContaining(@Param("name") String name);
 
-    @PostFilter("hasRole('ROLE_ADMIN') or #u.email == authentication.name")
-    @Query("select a from Activity a where a.status.idactivitystatus = :idactivitystatus and :user in elements(a.users)")
-    List<Activity> findAllByActivityStatusIdAndUser(Integer idactivitystatus, @P("u") @Param("user") User user);
+//    @PostFilter("hasRole('ROLE_ADMIN') or #u.email == authentication.name")
+//    @Query("select a from Activity a where a.status.idactivitystatus = :idactivitystatus and :user in elements(a.users)")
+//    List<Activity> findAllByActivityStatusIdAndUser(Integer idactivitystatus, @P("u") @Param("user") User user);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @NotNull
