@@ -5,11 +5,13 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class RestService {
@@ -55,7 +57,7 @@ public class RestService {
     }
 
     public List<User> getActivityParticipantsById(@NotNull Integer id) {
-        return activityRepository.findById(id).orElseThrow(NoSuchElementException::new).getUsers().stream().toList();
+        return new ArrayList<>(activityRepository.findById(id).orElseThrow(NoSuchElementException::new).getUsers());
     }
 
     public int updateUserBalance(Integer balance, Integer iduser) {

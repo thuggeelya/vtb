@@ -54,9 +54,9 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return userRepository.findByIduser(loginFormService
+            return new ArrayList<>(userRepository.findByIduser(loginFormService
                     .getByLogin(authentication.getName())
-                    .getIduser()).get().getOrders().stream().toList();
+                    .getIduser()).get().getOrders());
         }
 
         return orders;
@@ -69,9 +69,9 @@ public class AccountController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return userRepository.findByIduser(loginFormService
+            return new ArrayList<>(userRepository.findByIduser(loginFormService
                     .getByLogin(authentication.getName())
-                    .getIduser()).get().getActivities().stream().toList();
+                    .getIduser()).get().getActivities());
         }
 
         return activities;
