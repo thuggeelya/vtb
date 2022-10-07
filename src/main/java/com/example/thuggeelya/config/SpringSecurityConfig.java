@@ -3,6 +3,7 @@ package com.example.thuggeelya.config;
 import com.example.thuggeelya.data.security.JwtCsrfFilter;
 import com.example.thuggeelya.data.security.JwtTokenRepository;
 import com.example.thuggeelya.data.security.LoginFormService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,9 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +40,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(@NotNull CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+            }
+        };
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors().disable()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
