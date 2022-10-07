@@ -89,6 +89,6 @@ public class AdminController {
 
     @GetMapping("/users/{id}/wallet")
     public ResponseEntity<?> getUserWalet(@PathVariable Integer id) {
-        return ResponseEntity.ok(adminService.getUserById(id).getWalet());
+        return ResponseEntity.ok(adminService.getUserById(id).getIdwalet());
     }
 }

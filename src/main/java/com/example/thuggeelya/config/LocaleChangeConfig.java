@@ -28,11 +28,11 @@ public class LocaleChangeConfig implements WebMvcConfigurer {
         return localeChangeInterceptor;
     }
 
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**")
-//                .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
-//    }
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

@@ -80,9 +80,10 @@ public class User {
     @ToString.Exclude
     private Set<Order> orders = new LinkedHashSet<>();
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idwalet")
-    private Walet walet;
+    private Walet idwalet;
 
     @ManyToMany
     @JoinTable(name = "manager",
@@ -98,8 +99,8 @@ public class User {
     @ToString.Exclude
     private Set<User> users2 = new LinkedHashSet<>();
 
-    public Walet getWalet() {
-        return walet;
+    public Walet getIdwalet() {
+        return idwalet;
     }
 
     public Set<User> getUsers2() {

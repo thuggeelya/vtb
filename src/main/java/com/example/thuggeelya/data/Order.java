@@ -40,7 +40,7 @@ public class Order {
     @ToString.Exclude
     private Set<Goody> goodies = new LinkedHashSet<>();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "order")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "idorder")
     private Payment payments;
 
     public Payment getPayments() {
