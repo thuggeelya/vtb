@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -15,11 +14,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RestService {
 
+    private static final ScheduledExecutorService EXECUTOR_BALANCE_MONTHLY =
+            Executors.newSingleThreadScheduledExecutor();
     private final GoodyRepository goodyRepository;
     private final ActivityRepository activityRepository;
     private final UserRepository userRepository;
-    private static final ScheduledExecutorService EXECUTOR_BALANCE_MONTHLY =
-            Executors.newSingleThreadScheduledExecutor();
 
     @Autowired
     public RestService(GoodyRepository goodyRepository, ActivityRepository activityRepository, UserRepository userRepository) {
