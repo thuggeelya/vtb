@@ -1,10 +1,12 @@
 package com.example.thuggeelya.controllers;
 
+import com.example.thuggeelya.data.User;
 import com.example.thuggeelya.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -27,7 +29,7 @@ public class ActivityController {
     }
 
     @GetMapping("/{id}/participants")
-    public ResponseEntity<?>
+    public ResponseEntity<List<User>>
     getActivityParticipants(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(service.getActivityParticipantsById(id));

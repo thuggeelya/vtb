@@ -76,7 +76,7 @@ public class User {
     private Set<Activity> activities = new LinkedHashSet<>();
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "iduser")
     @ToString.Exclude
     private Set<Order> orders = new LinkedHashSet<>();
 
