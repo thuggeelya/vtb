@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Entity
@@ -32,30 +30,6 @@ public class User {
             ))
     @ToString.Exclude
     private final List<Activity> activities = new ArrayList<>();
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iduser")
-    private Integer iduser;
-    private String email;
-    private Integer balance;
-    private String lastname;
-    private String name;
-    private String patronymic;
-    private String phone;
-
-    @JsonManagedReference
-    @ManyToOne
-    @Transient
-    @JoinColumn(name = "idmanager")
-    private Manager manager;
-
-    @JsonBackReference
-    @OneToOne
-    @Transient
-    @JoinColumn(name = "iduser")
-    private LoginForm loginForm;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @Transient
     @ToString.Exclude
@@ -71,6 +45,29 @@ public class User {
             )
     )
     private final Set<Role> roles = new HashSet<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iduser")
+    private Integer iduser;
+    private String email;
+    private Integer balance;
+    private String lastname;
+    private String name;
+    private String patronymic;
+    private String phone;
+    @Nullable
+    @Temporal(TemporalType.DATE)
+    private Date datebalancing;
+    @JsonManagedReference
+    @ManyToOne
+    @Transient
+    @JoinColumn(name = "idmanager")
+    private Manager manager;
+    @JsonBackReference
+    @OneToOne
+    @Transient
+    @JoinColumn(name = "iduser")
+    private LoginForm loginForm;
 
     public User() {
     }
@@ -82,5 +79,6 @@ public class User {
         patronymic = "";
         balance = 100;
         phone = "";
+        datebalancing = null;
     }
 }

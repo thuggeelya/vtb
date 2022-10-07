@@ -40,16 +40,18 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.manager" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.useractivity" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.user" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.loginform" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity_status" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activitystatus" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.login_form" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.goody" active-filter-id="" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.payment" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity_type" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activitytype" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.loginform" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity_type" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.role" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

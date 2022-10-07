@@ -2,6 +2,7 @@ package com.example.thuggeelya.data;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -31,10 +32,12 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
     <S extends Activity> S save(@NotNull S entity);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Modifying(clearAutomatically = true)
     @Override
     void deleteById(@Param("id") @NotNull Integer id);
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Modifying(clearAutomatically = true)
     @Override
     void delete(@Param("activity") @NotNull Activity activity);
 }
