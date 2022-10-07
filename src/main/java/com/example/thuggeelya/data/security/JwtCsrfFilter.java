@@ -42,7 +42,7 @@ public class JwtCsrfFilter extends OncePerRequestFilter {
 
         request.setAttribute(CsrfToken.class.getName(), csrfToken);
         request.setAttribute(csrfToken.getParameterName(), csrfToken);
-        if (request.getServletPath().equals("/auth/login")) {
+        if (request.getServletPath().equals("/auth/login") || request.getServletPath().equals("/auth/loginUser")) {
             try {
                 filterChain.doFilter(request, response);
             } catch (Exception e) {

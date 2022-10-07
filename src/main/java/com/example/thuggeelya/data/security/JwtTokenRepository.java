@@ -4,6 +4,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Getter;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.DefaultCsrfToken;
@@ -56,6 +57,9 @@ public class JwtTokenRepository implements CsrfTokenRepository {
 
     @Override
     public void saveToken(CsrfToken csrfToken, HttpServletRequest request, HttpServletResponse response) {
+        response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
+        response.addHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "*");
+
         if (Objects.nonNull(csrfToken)) {
             if (!response.getHeaderNames().contains(ACCESS_CONTROL_EXPOSE_HEADERS))
                 response.addHeader(ACCESS_CONTROL_EXPOSE_HEADERS, csrfToken.getHeaderName());

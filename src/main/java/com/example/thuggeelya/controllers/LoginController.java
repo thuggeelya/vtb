@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 @RestController
@@ -38,4 +36,9 @@ public class LoginController {
         System.out.println(loginForm);
         return Objects.nonNull(loginForm) ? this.service.getByLogin(loginForm.getLogin()) : null;
     }
+
+//    @GetMapping("/loginUser")
+//    public String getLoginUserPage() {
+//        return "redirect:/index";
+//    }
 }
