@@ -1,9 +1,6 @@
 package com.example.thuggeelya.controllers;
 
-import com.example.thuggeelya.data.Activity;
-import com.example.thuggeelya.data.LoginForm;
-import com.example.thuggeelya.data.Manager;
-import com.example.thuggeelya.data.Transaction;
+import com.example.thuggeelya.data.*;
 import com.example.thuggeelya.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -83,5 +80,15 @@ public class AdminController {
     @GetMapping("/users/{id}/transactions")
     public ResponseEntity<?> getUserTransactionsBySenderId(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getUserTransactionsBySenderId(id));
+    }
+
+    @PostMapping("/users/{id}/wallet/new")
+    public ResponseEntity<?> createWalletTo(@RequestBody Walet walet, @PathVariable Integer id) {
+        return ResponseEntity.ok(adminService.addNewWalet(walet, id));
+    }
+
+    @GetMapping("/users/{id}/wallet")
+    public ResponseEntity<?> getUserWalet(@PathVariable Integer id) {
+        return ResponseEntity.ok(adminService.getUserById(id).getWalet());
     }
 }

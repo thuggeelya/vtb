@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class AdminService {
@@ -16,17 +17,19 @@ public class AdminService {
     private final TransactionRepository transactionRepository;
     private final UserRoleRepository userRoleRepository;
     private final UserRepository userRepository;
+    private final WaletRepository waletRepository;
 
     @Autowired
     public AdminService(LoginFormRepository loginFormRepository, ActivityRepository activityRepository,
                         ManagerRepository managerRepository, TransactionRepository transactionRepository,
-                        UserRoleRepository roleRepository, UserRepository userRepository) {
+                        UserRoleRepository roleRepository, UserRepository userRepository, WaletRepository waletRepository) {
         this.loginFormRepository = loginFormRepository;
         this.activityRepository = activityRepository;
         this.managerRepository = managerRepository;
         this.transactionRepository = transactionRepository;
         this.userRoleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.waletRepository = waletRepository;
     }
 
     public LoginForm addNewLoginForm(LoginForm loginForm) {
@@ -59,6 +62,10 @@ public class AdminService {
         return userRepository.findAll();
     }
 
+    public User getUserById(Integer iduser) {
+        return userRepository.findByIduser(iduser).orElseThrow(NoSuchElementException::new);
+    }
+
     public List<Transaction> getUserTransactionsBySenderId(Integer iduser) {
         return transactionRepository.findAllBySender_Iduser(iduser);
     }
@@ -69,5 +76,11 @@ public class AdminService {
 
     public Transaction addNewTransaction(Transaction transaction) {
         return transactionRepository.save(transaction);
+    }
+
+    public Walet addNewWalet(Walet walet, Integer iduser) {
+        Walet newWalet = waletRepository.save(walet);
+        userRepository.setWaletById(iduser, walet.getIdwalet());
+        return newWalet;
     }
 }

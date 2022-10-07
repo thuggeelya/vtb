@@ -28,4 +28,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("update User u set u.datebalancing = CURRENT_DATE where u.datebalancing is null")
     void upToDateUsersBalanceDateIfNull();
+
+    @Modifying(clearAutomatically = true)
+    @Query("update User u set u.idwalet = :idwalet where u.iduser = :iduser")
+    void setWaletById(@Param("iduser") Integer iduser, @Param("idwalet") Integer idwalet);
 }

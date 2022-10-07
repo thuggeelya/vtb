@@ -80,6 +80,10 @@ public class User {
     @ToString.Exclude
     private Set<Order> orders = new LinkedHashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idwalet")
+    private Walet walet;
+
     @ManyToMany
     @JoinTable(name = "manager",
             joinColumns = @JoinColumn(name = "idmanager"),
@@ -93,6 +97,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "idmanager"))
     @ToString.Exclude
     private Set<User> users2 = new LinkedHashSet<>();
+
+    public Walet getWalet() {
+        return walet;
+    }
 
     public Set<User> getUsers2() {
         return users2;
