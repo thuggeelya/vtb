@@ -1,6 +1,6 @@
 package com.example.thuggeelya.data;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
 @Setter
 @ToString
 @AllArgsConstructor
@@ -18,15 +18,25 @@ import java.util.Objects;
 public class LoginForm implements Serializable {
 
     @Id
+    @Getter
     private Integer iduser;
+    @Getter
     private String login;
+    @Getter
     private String password;
 
-    @JsonManagedReference
-    @OneToOne(fetch = FetchType.EAGER)
-    @Transient
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "iduser")
+    @ToString.Exclude
     private User user;
+
+    @JsonIgnore
+    @JsonManagedReference
+    public User getUser() {
+        return user;
+    }
 
     @Override
     public boolean equals(Object o) {

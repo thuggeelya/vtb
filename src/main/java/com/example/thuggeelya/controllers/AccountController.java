@@ -56,7 +56,7 @@ public class AccountController {
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             return userRepository.findByIduser(loginFormService
                     .getByLogin(authentication.getName())
-                    .getIduser()).get().getOrders();
+                    .getIduser()).get().getOrders().stream().toList();
         }
 
         return orders;
@@ -71,7 +71,7 @@ public class AccountController {
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             return userRepository.findByIduser(loginFormService
                     .getByLogin(authentication.getName())
-                    .getIduser()).get().getActivities();
+                    .getIduser()).get().getActivities().stream().toList();
         }
 
         return activities;

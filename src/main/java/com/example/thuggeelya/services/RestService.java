@@ -55,7 +55,7 @@ public class RestService {
     }
 
     public List<User> getActivityParticipantsById(@NotNull Integer id) {
-        return activityRepository.findById(id).orElseThrow(NoSuchElementException::new).getUsers();
+        return activityRepository.findById(id).orElseThrow(NoSuchElementException::new).getUsers().stream().toList();
     }
 
     public int updateUserBalance(Integer balance, Integer iduser) {
