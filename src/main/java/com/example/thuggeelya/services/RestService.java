@@ -69,4 +69,8 @@ public class RestService {
     public List<User> findByBalanceBetween(Integer balanceStart, Integer balanceEnd) {
         return userRepository.findByBalanceBetweenOrderByBalanceDesc(balanceStart, balanceEnd);
     }
+
+    public Activity getActivity(Integer id) {
+        return activityRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    }
 }

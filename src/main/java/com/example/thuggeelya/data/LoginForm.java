@@ -23,7 +23,7 @@ public class LoginForm implements Serializable {
     private String password;
 
     @JsonManagedReference
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @Transient
     @JoinColumn(name = "iduser")
     private User user;

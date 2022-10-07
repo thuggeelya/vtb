@@ -35,4 +35,14 @@ public class ActivityController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?>
+    getActivity(@PathVariable Integer id) {
+        try {
+            return ResponseEntity.ok(service.getActivity(id));
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

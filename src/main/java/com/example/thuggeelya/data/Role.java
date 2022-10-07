@@ -19,7 +19,7 @@ public class Role {
     private String name;
 
     @Transient
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "userrole",
             joinColumns = @JoinColumn(

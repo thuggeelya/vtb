@@ -23,10 +23,10 @@ public class Transaction {
     private Integer sum;
     private Integer fee;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idaccepter")
     private User accepter;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idsender")
     private User sender;
 }

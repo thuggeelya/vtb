@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Activity {
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Transient
     @JoinTable(name = "useractivity",
             joinColumns = @JoinColumn(
@@ -41,7 +41,7 @@ public class Activity {
     @ManyToOne
     @JoinColumn(name = "idactivitytype")
     private ActivityType type;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idactivitystatus")
     private ActivityStatus status;
 }

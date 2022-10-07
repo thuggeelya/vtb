@@ -15,7 +15,7 @@ import java.util.List;
 @ToString
 public class Order {
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "ordergoody",
             joinColumns = @JoinColumn(
                     name = "idorder",

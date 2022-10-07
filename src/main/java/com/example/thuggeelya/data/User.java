@@ -7,7 +7,10 @@ import lombok.ToString;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -19,7 +22,7 @@ public class User {
     @Transient
     @ToString.Exclude
     private final List<Order> orders = new ArrayList<>();
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "useractivity",
             joinColumns = @JoinColumn(
                     name = "iduser",
@@ -60,12 +63,12 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date datebalancing;
     @JsonManagedReference
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @Transient
     @JoinColumn(name = "idmanager")
     private Manager manager;
     @JsonBackReference
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @Transient
     @JoinColumn(name = "iduser")
     private LoginForm loginForm;

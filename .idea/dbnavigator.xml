@@ -33,11 +33,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/user" />
-      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/loginform" />
-      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/userrole" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="8767df64-5702-4917-82c6-28f88df0c313" />
@@ -56,6 +52,7 @@
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.loginform" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.payment" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activitytype" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.activity" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.loginform" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity_type" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.role" active-filter-id="EMPTY_FILTER" />
