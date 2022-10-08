@@ -34,8 +34,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/walet" />
-      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/activity" />
+      <object connection-id="8767df64-5702-4917-82c6-28f88df0c313" object-ref="schemas/sql8524150/tables/role" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -60,6 +59,7 @@
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.activitystatus" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.walet" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.tag" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.userlevel" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.activitytype" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="vtb.activity_type" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="8767df64-5702-4917-82c6-28f88df0c313" dataset="sql8524150.role" active-filter-id="EMPTY_FILTER" />
@@ -150,7 +150,7 @@
           <max-connection-pool-size value="7" />
           <alternative-statement-delimiter value="" />
         </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="true">
           <object-type-filter>
             <object-type name="SCHEMA" enabled="true" />
             <object-type name="USER" enabled="true" />

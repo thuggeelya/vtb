@@ -1,8 +1,13 @@
 package com.example.thuggeelya.data;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "walet")
 public class Walet {
     @Id

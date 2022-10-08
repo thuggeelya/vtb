@@ -46,7 +46,7 @@ public class User {
     private LocalDate datebalancing;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "idwalet")
     private Walet idwalet;
 
@@ -99,9 +99,9 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private Userlevel userlevel;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "creator")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "creator")
     @ToString.Exclude
-    private Activity acase;
+    private Set<Activity> acases = new LinkedHashSet<>();
 
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "iduser")
