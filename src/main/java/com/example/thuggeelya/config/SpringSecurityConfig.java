@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
@@ -34,6 +35,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder devPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .inMemoryAuthentication()
+                .passwordEncoder(devPasswordEncoder())
+                .withUser("thuggeelya").password("thuggeelya").roles("ADMIN", "USER", "HR", "MANAGER").and()
+                .withUser("nozizar").password("nozizar").roles("ADMIN", "USER", "HR", "MANAGER").and()
+                .withUser("lexa").password("lexa").roles("ADMIN", "USER", "HR", "MANAGER");
     }
 
     @Override
