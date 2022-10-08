@@ -5,14 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idactivity")
@@ -20,6 +19,8 @@ import java.util.Set;
 @JsonSerialize
 @NoArgsConstructor
 @Table(name = "activity")
+@Getter
+@Setter
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,92 +69,4 @@ public class Activity {
             joinColumns = @JoinColumn(name = "idactivity"),
             inverseJoinColumns = @JoinColumn(name = "iduser"))
     private Set<User> users = new LinkedHashSet<>();
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    public User getCreator() {
-        return creator;
-    }
-
-    public void setCreator(User creator) {
-        this.creator = creator;
-    }
-
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getReward() {
-        return reward;
-    }
-
-    public void setReward(String reward) {
-        this.reward = reward;
-    }
-
-    public LocalDate getDatefinish() {
-        return datefinish;
-    }
-
-    public void setDatefinish(LocalDate datefinish) {
-        this.datefinish = datefinish;
-    }
-
-    public LocalDate getDatestart() {
-        return datestart;
-    }
-
-    public void setDatestart(LocalDate datestart) {
-        this.datestart = datestart;
-    }
-
-    public ActivityType getType() {
-        return type;
-    }
-
-    public void setType(ActivityType type) {
-        this.type = type;
-    }
-
-    public ActivityStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ActivityStatus status) {
-        this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getIdactivity() {
-        return idactivity;
-    }
-
-    public void setIdactivity(Integer idactivity) {
-        this.idactivity = idactivity;
-    }
 }

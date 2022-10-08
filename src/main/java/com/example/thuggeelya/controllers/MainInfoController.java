@@ -27,7 +27,7 @@ public class MainInfoController {
         this.loginFormService = loginFormService;
     }
 
-    @GetMapping("/isAdmin")
+    @GetMapping("/roles")
     public ResponseEntity<?> isCurrentUserAdmin() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -45,15 +45,11 @@ public class MainInfoController {
                     .orElse(null);
 
             if (Objects.nonNull(user)) {
-                for (Role role : user.getRoles()) {
-                    if (role.getIdrole().equals(RoleEnum.ROLE_ADMIN.getId())) {
-                        return ResponseEntity.ok(true);
-                    }
-                }
+                return ResponseEntity.ok(user.getRoles());
             }
         }
 
-        return ResponseEntity.ok(false);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/activities")

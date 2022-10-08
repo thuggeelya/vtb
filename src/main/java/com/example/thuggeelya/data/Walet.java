@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "walet")
+@Setter
+@Getter
 public class Walet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +29,8 @@ public class Walet {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "idwalet")
     @ToString.Exclude
-    @Setter
-    @Getter
     private User user;
 
-    public Integer getIdwalet() {
-        return idwalet;
-    }
-
-    public void setIdwalet(Integer idwalet) {
-        this.idwalet = idwalet;
-    }
+    @OneToMany(mappedBy = "idwalet")
+    private Set<Nft> nfts = new LinkedHashSet<>();
 }
