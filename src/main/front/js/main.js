@@ -22,7 +22,7 @@ btnlogin.addEventListener('click',(event)=>{
 	let encoded = window.btoa(userlofinwithpass)
 		let auth = 'Basic ' + encoded
 
-	fetch('https://vtbservice.herokuapp.com/auth/login', {
+	fetch('http://localhost:8085/auth/login', {
 		method: 'POST',
 		mode: 'cors',
 		headers: {
@@ -42,13 +42,12 @@ btnlogin.addEventListener('click',(event)=>{
 				localStorage.setItem('name', login.value)
 				localStorage.setItem('password', password.value)
 
-				window.location.href="./../personal-account/index.html";
+				window.location.href="./personal-account/index.html";
 
 			}
 			else{
 				document.getElementById('login-info').innerText = 'Ошибка с авторизацией'
 			}
-
 
 		})
 		// getActivities()
@@ -58,7 +57,7 @@ btnlogin.addEventListener('click',(event)=>{
 function getActivities(){
 	const tokenauth = localStorage.getItem('tokenauth')
 
-	fetch(`https://vtbservice.herokuapp.com/info/activities?token=${tokenauth}`,{
+	fetch(`http://localhost:8085/info/activities?token=${tokenauth}`,{
 		method: 'GET',
 		headers:{
 			'Accept': 'application/json'
@@ -87,5 +86,3 @@ function getActivities(){
 // 	.then(data => {
 // 		console.log(data)
 // 	})
-
-
