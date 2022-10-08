@@ -1,8 +1,12 @@
 package com.example.thuggeelya.data;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "manager")
@@ -18,17 +22,12 @@ public class Manager {
     @JoinColumn(name = "idmanager", nullable = false)
     private User user;
 
+    @Getter
+    @Setter
+    @Transient
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "iduser", nullable = false)
-    private User iduser;
-
-    public User getIduser() {
-        return iduser;
-    }
-
-    public void setIduser(User iduser) {
-        this.iduser = iduser;
-    }
+    private Set<User> iduser = new LinkedHashSet<>();
 
     public User getUser() {
         return user;

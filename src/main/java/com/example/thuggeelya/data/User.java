@@ -66,12 +66,14 @@ public class User {
     @OneToMany(mappedBy = "accepter")
     private Set<Transaction> transactionsAsAccepter = new LinkedHashSet<>();
 
-    @JsonSerialize
-    @Transient
+//    @Transient
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     @ToString.Exclude
+    @Setter
     private LoginForm loginform;
+    @Getter
+    @Setter
     @ManyToMany
     @JoinTable(name = "userrole",
             joinColumns = @JoinColumn(name = "iduser"),
@@ -91,6 +93,7 @@ public class User {
     @ToString.Exclude
     private Set<Order> orders = new LinkedHashSet<>();
     @ManyToMany
+    @Transient
     @JoinTable(name = "manager",
             joinColumns = @JoinColumn(name = "idmanager"),
             inverseJoinColumns = @JoinColumn(name = "iduser"))
@@ -107,7 +110,7 @@ public class User {
     private List<Comment> comments = new ArrayList<>();
 
     @JsonIgnore
-    @JsonBackReference
+//    @JsonBackReference
     public LoginForm getLoginform() {
         return loginform;
     }

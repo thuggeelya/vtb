@@ -28,8 +28,9 @@ public class AdminController {
         return ResponseEntity.created(location).build();
     }
 
-    @PostMapping("/loginForms")
+    @PostMapping(value = "/loginForms")
     public ResponseEntity<?> createUser(@RequestBody LoginForm loginForm) {
+        System.out.println("got to create loginform: " + loginForm);
         LoginForm newLoginForm = adminService.addNewLoginForm(loginForm);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(newLoginForm.getIduser()).toUri();

@@ -27,14 +27,15 @@ public class LoginForm implements Serializable {
     private String password;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @Setter
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "iduser")
     @ToString.Exclude
     private User user;
 
     @JsonIgnore
-    @JsonManagedReference
+//    @JsonManagedReference
     public User getUser() {
         return user;
     }

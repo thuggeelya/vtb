@@ -19,7 +19,7 @@ public interface LoginFormRepository extends JpaRepository<LoginForm, Integer> {
     @NotNull
     List<LoginForm> findAll();
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') || hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') || hasRole('ADMIN')")
     @NotNull
     @Override
     <S extends LoginForm> S save(@NotNull S entity);
