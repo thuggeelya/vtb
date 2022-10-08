@@ -20,7 +20,7 @@ public class ActivityController {
         this.service = service;
     }
 
-    @GetMapping(value = {"/search/{searchWord}", "/search"})
+    @PostMapping(value = {"/search/{searchWord}", "/search"})
     public ResponseEntity<?>
     getActivitiesBySearch(@PathVariable(value = "searchWord", required = false) String searchWord) {
         return searchWord == null ?

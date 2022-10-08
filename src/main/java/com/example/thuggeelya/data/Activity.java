@@ -51,11 +51,15 @@ public class Activity {
     @Column(name = "description", length = 45)
     private String description;
 
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idcreator", unique = false)
     private User creator;
 
     @OneToMany(mappedBy = "idactivity")
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
     private Set<Comment> comments = new LinkedHashSet<>();
 
     @ManyToMany

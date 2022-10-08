@@ -1,7 +1,6 @@
 package com.example.thuggeelya.data;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 
 import javax.persistence.*;
@@ -66,7 +65,7 @@ public class User {
     @OneToMany(mappedBy = "accepter")
     private Set<Transaction> transactionsAsAccepter = new LinkedHashSet<>();
 
-//    @Transient
+    //    @Transient
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     @ToString.Exclude
@@ -109,12 +108,6 @@ public class User {
     @JoinColumn(name = "iduser")
     private List<Comment> comments = new ArrayList<>();
 
-    @JsonIgnore
-//    @JsonBackReference
-    public LoginForm getLoginform() {
-        return loginform;
-    }
-
     public User(Integer iduser,
                 String lastname,
                 String name,
@@ -135,5 +128,11 @@ public class User {
         this.monthrate = monthrate;
         this.loginform = loginform;
         this.roles = roles;
+    }
+
+    @JsonIgnore
+//    @JsonBackReference
+    public LoginForm getLoginform() {
+        return loginform;
     }
 }
