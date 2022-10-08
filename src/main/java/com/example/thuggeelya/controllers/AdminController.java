@@ -94,4 +94,9 @@ public class AdminController {
     public ResponseEntity<?> getUserWalet(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getUserById(id).getIdwalet());
     }
+
+    @PostMapping("/users/{id}/generate/nft/{count}")
+    public ResponseEntity<?> generateNfts(@PathVariable("id") Integer id, @PathVariable("count") Integer count) {
+        return ResponseEntity.ok(adminService.generateNfts(id, count));
+    }
 }

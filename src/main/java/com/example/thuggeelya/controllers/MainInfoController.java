@@ -1,13 +1,18 @@
 package com.example.thuggeelya.controllers;
 
-import com.example.thuggeelya.data.*;
+import com.example.thuggeelya.data.LoginForm;
+import com.example.thuggeelya.data.User;
+import com.example.thuggeelya.data.UserRepository;
 import com.example.thuggeelya.data.security.LoginFormService;
 import com.example.thuggeelya.services.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -43,7 +48,7 @@ public class MainInfoController {
 
         if (Objects.nonNull(loginForm)) {
             User user = userRepository.findByIduser(this.loginFormService.
-                    getByLogin(loginForm.getUsername()).getIduser())
+                            getByLogin(loginForm.getUsername()).getIduser())
                     .orElse(null);
 
             if (Objects.nonNull(user)) {

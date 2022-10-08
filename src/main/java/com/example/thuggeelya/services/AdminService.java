@@ -5,13 +5,14 @@ import com.example.thuggeelya.data.security.LoginFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 public class AdminService {
+
+    private static final String BASE_URL = "https://hackathon.lsp.team/hk";
 
     private final LoginFormRepository loginFormRepository;
     private final ActivityRepository activityRepository;
@@ -91,5 +92,12 @@ public class AdminService {
         user.setIdwalet(newWalet);
         userRepository.save(user);
         return newWalet;
+    }
+
+    public List<Nft> generateNfts(Integer iduser, Integer count) {
+        Walet userWalet = userRepository.findByIduser(iduser)
+                .orElseThrow(NoSuchElementException::new).getIdwalet();
+        String genNftsReq = BASE_URL + "/v1/nft/generate";
+        return null;
     }
 }
