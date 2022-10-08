@@ -45,9 +45,7 @@ public class LoginFormService implements UserDetailsService {
 
         return new User(loginForm.getLogin(), loginForm.getPassword(), true, true,
                 true, true,
-                getAuthorities(userRepository.findByIduser(loginForm.getIduser())
-                        .orElseThrow(NoSuchElementException::new)
-                        .getRoles()));
+                new HashSet<>());
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
