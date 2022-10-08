@@ -5,6 +5,8 @@ import com.example.thuggeelya.data.security.LoginFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -34,7 +36,8 @@ public class AdminService {
 
     public LoginForm addNewLoginForm(LoginForm loginForm) {
         LoginForm newLoginForm = loginFormRepository.save(loginForm);
-        userRoleRepository.save(new UserRole(new UserRoleKey(newLoginForm.getIduser(), RoleEnum.ROLE_USER.getId())));
+//        userRoleRepository.save(new UserRole(new UserRoleKey(newLoginForm.getIduser(), RoleEnum.ROLE_USER.getId())));
+        userRepository.save(new User(newLoginForm.getIduser(), "", "", "", "", "", 0, 1, newLoginForm, new LinkedHashSet<>()));
         return newLoginForm;
     }
 

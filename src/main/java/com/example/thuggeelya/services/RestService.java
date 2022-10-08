@@ -8,16 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 @Service
 public class RestService {
 
-    private static final ScheduledExecutorService EXECUTOR_BALANCE_MONTHLY =
-            Executors.newSingleThreadScheduledExecutor();
     private final GoodyRepository goodyRepository;
     private final ActivityRepository activityRepository;
     private final UserRepository userRepository;
@@ -27,9 +21,6 @@ public class RestService {
         this.goodyRepository = goodyRepository;
         this.activityRepository = activityRepository;
         this.userRepository = userRepository;
-        EXECUTOR_BALANCE_MONTHLY.scheduleAtFixedRate(() -> {
-
-        }, 0, 31, TimeUnit.DAYS);
     }
 
     public List<Goody> getGoodies() {

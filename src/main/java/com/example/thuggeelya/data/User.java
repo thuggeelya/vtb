@@ -20,7 +20,6 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser", nullable = false)
     private Integer iduser;
 
@@ -113,4 +112,25 @@ public class User {
         return loginform;
     }
 
+    public User(Integer iduser,
+                String lastname,
+                String name,
+                String patronymic,
+                String email,
+                String phone,
+                Integer balance,
+                Integer monthrate,
+                LoginForm loginform,
+                Set<Role> roles) {
+        this.iduser = iduser;
+        this.lastname = lastname;
+        this.name = name;
+        this.patronymic = patronymic;
+        this.email = email;
+        this.phone = phone;
+        this.balance = balance;
+        this.monthrate = monthrate;
+        this.loginform = loginform;
+        this.roles = roles;
+    }
 }

@@ -18,6 +18,7 @@ import java.util.Objects;
 public class LoginForm implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private Integer iduser;
     @Getter
