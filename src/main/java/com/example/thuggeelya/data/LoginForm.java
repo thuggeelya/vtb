@@ -1,8 +1,13 @@
 package com.example.thuggeelya.data;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,20 +30,24 @@ public class LoginForm implements Serializable {
     private String login;
     @Getter
     private String password;
-
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @Setter
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "iduser")
-    @ToString.Exclude
-    private User user;
-
-    @JsonIgnore
-//    @JsonManagedReference
-    public User getUser() {
-        return user;
-    }
+//
+//    @JsonIgnore
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    @org.springframework.data.annotation.Transient
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @Setter
+//    @MapsId
+//    @OneToOne
+//    @JoinColumn(name = "iduser")
+//    @ToString.Exclude
+//    @PrimaryKeyJoinColumn
+//    private User user;
+//
+//    @JsonIgnore
+////    @JsonManagedReference
+//    public User getUser() {
+//        return user;
+//    }
 
     @Override
     public boolean equals(Object o) {

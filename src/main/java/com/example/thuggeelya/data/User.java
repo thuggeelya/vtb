@@ -2,6 +2,8 @@ package com.example.thuggeelya.data;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,6 +21,7 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser", nullable = false)
     private Integer iduser;
 
@@ -43,9 +46,13 @@ public class User {
     @Column(name = "datebalancing")
     private LocalDate datebalancing;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "idwalet")
+    //    @JsonBackReference
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
+    @OneToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "idwalet", nullable = true)
     private Walet idwalet;
 
     @Column(name = "monthrate", nullable = false)
@@ -59,18 +66,25 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "idtag"))
     private Set<Tag> tags = new LinkedHashSet<>();
 
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
+    @Transient
     @OneToMany(mappedBy = "sender")
     private Set<Transaction> transactionsAsSender = new LinkedHashSet<>();
 
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
     @OneToMany(mappedBy = "accepter")
     private Set<Transaction> transactionsAsAccepter = new LinkedHashSet<>();
 
-    //    @Transient
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    @ToString.Exclude
-    @Setter
-    private LoginForm loginform;
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    @JsonIgnore
+//    @org.springframework.data.annotation.Transient
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    @ToString.Exclude
+//    @Setter
+//    private LoginForm loginform;
     @Getter
     @Setter
     @ManyToMany
@@ -108,17 +122,14 @@ public class User {
     @JoinColumn(name = "iduser")
     private List<Comment> comments = new ArrayList<>();
 
-    public User(Integer iduser,
-                String lastname,
+    public User(String lastname,
                 String name,
                 String patronymic,
                 String email,
                 String phone,
                 Integer balance,
                 Integer monthrate,
-                LoginForm loginform,
                 Set<Role> roles) {
-        this.iduser = iduser;
         this.lastname = lastname;
         this.name = name;
         this.patronymic = patronymic;
@@ -126,13 +137,12 @@ public class User {
         this.phone = phone;
         this.balance = balance;
         this.monthrate = monthrate;
-        this.loginform = loginform;
         this.roles = roles;
     }
-
-    @JsonIgnore
-//    @JsonBackReference
-    public LoginForm getLoginform() {
-        return loginform;
-    }
+//
+//    @JsonIgnore
+////    @JsonBackReference
+//    public LoginForm getLoginform() {
+//        return loginform;
+//    }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -28,7 +30,7 @@ public class AdminController {
         return ResponseEntity.created(location).build();
     }
 
-    @PostMapping(value = "/loginForms")
+    @PostMapping(value = "/loginForms", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createUser(@RequestBody LoginForm loginForm) {
         System.out.println("got to create loginform: " + loginForm);
         LoginForm newLoginForm = adminService.addNewLoginForm(loginForm);

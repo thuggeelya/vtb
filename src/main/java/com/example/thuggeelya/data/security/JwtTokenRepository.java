@@ -34,7 +34,7 @@ public class JwtTokenRepository implements CsrfTokenRepository {
     public CsrfToken generateToken(HttpServletRequest httpServletRequest) {
         String id = UUID.randomUUID().toString().replace("-", "");
         Date now = new Date();
-        Date exp = Date.from(LocalDateTime.now().plusMinutes(30)
+        Date exp = Date.from(LocalDateTime.now().plusHours(8)
                 .atZone(ZoneId.systemDefault()).toInstant());
 
         String token = "";

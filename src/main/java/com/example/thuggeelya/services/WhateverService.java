@@ -62,7 +62,7 @@ public class WhateverService {
         Object principal = auth.getPrincipal();
         LoginForm loginForm = (principal instanceof LoginForm) ? (LoginForm) principal : null;
         System.out.println(loginForm);
-        User user = Objects.nonNull(loginForm) ? loginForm.getUser() : null;
+        User user = Objects.nonNull(loginForm) ? userRepository.findByIduser(loginForm.getIduser()).orElse(null) : null;
 
         if (Objects.nonNull(loginForm) && Objects.isNull(user)) {
             user = userRepository.findByIduser(loginForm.getIduser()).orElseThrow(NoSuchElementException::new);

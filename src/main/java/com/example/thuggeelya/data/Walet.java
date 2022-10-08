@@ -1,7 +1,8 @@
 package com.example.thuggeelya.data;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,6 +19,15 @@ public class Walet {
     private String publicKey;
     @Column(name = "private", nullable = false)
     private String privateKey;
+
+    @JsonIgnore
+    @org.springframework.data.annotation.Transient
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "idwalet")
+    @ToString.Exclude
+    @Setter
+    @Getter
+    private User user;
 
     public Integer getIdwalet() {
         return idwalet;

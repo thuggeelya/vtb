@@ -35,10 +35,11 @@ public class AdminService {
     }
 
     public LoginForm addNewLoginForm(LoginForm loginForm) {
+        User user = userRepository.save(new User("", "", "", "", "",
+                0, 1, new LinkedHashSet<>()));
+        loginForm.setIduser(user.getIduser());
         LoginForm newLoginForm = loginFormRepository.save(loginForm);
         System.out.println(loginForm + " saved as " + newLoginForm);
-//        userRoleRepository.save(new UserRole(new UserRoleKey(newLoginForm.getIduser(), RoleEnum.ROLE_USER.getId())));
-        userRepository.save(new User(newLoginForm.getIduser(), "", "", "", "", "", 0, 1, newLoginForm, new LinkedHashSet<>()));
         return newLoginForm;
     }
 
