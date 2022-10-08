@@ -80,7 +80,9 @@ public class AdminService {
 
     public Walet addNewWalet(Walet walet, Integer iduser) {
         Walet newWalet = waletRepository.save(walet);
-        userRepository.setWaletById(iduser, walet.getIdwalet());
+        User user = userRepository.findByIduser(iduser).get();
+        user.setIdwalet(newWalet);
+        userRepository.save(user);
         return newWalet;
     }
 }

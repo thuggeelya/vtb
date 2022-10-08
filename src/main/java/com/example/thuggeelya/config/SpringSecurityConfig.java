@@ -53,6 +53,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")
+                .antMatchers("/hr/**")
+                .hasAnyRole("ADMIN", "HR")
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint((request, response, e) ->

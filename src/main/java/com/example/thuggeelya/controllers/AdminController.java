@@ -82,7 +82,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getUserTransactionsBySenderId(id));
     }
 
-    @PostMapping("/users/{id}/wallet/new")
+    @PutMapping("/users/{id}/wallet/new")
     public ResponseEntity<?> createWalletTo(@RequestBody Walet walet, @PathVariable Integer id) {
         return ResponseEntity.ok(adminService.addNewWalet(walet, id));
     }

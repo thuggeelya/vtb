@@ -6,16 +6,19 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 
 import java.util.List;
+import java.util.Optional;
 
 @RepositoryRestResource
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
-    @Query("select a from Activity a where a.type.typename = :type")
-    List<Activity> findAllByActivityTypeName(@Param("type") String type);
+    //    @Query("select a from Activity a where a.type.typename = :type")
+    @Query("select a from Activity a where a.type.idactivitytype = 5")
+    List<Activity> findCases();
+
+    @Query("select a from Activity a where a.idactivity = :id")
+    Optional<Activity> findByIdactivity(@Param("id") Integer id);
 
     @Query("select a from Activity a where a.status.idactivitystatus = :idactivitystatus")
     List<Activity> findAllByActivityStatusId(@Param("idactivitystatus") Integer idactivitystatus);

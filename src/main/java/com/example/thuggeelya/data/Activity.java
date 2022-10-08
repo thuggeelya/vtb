@@ -9,7 +9,9 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idactivity")
@@ -50,6 +52,9 @@ public class Activity {
     @JoinColumn(name = "idcreator")
     private User creator;
 
+    @OneToMany(mappedBy = "idactivity")
+    private Set<Comment> comments = new LinkedHashSet<>();
+
     @ManyToMany
     @JsonBackReference
     @JoinTable(name = "useractivity",
@@ -63,6 +68,22 @@ public class Activity {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getDescription() {
