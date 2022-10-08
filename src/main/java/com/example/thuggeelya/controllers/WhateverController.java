@@ -32,7 +32,7 @@ public class WhateverController {
         return ResponseEntity.ok(whateverService.comment(comment));
     }
 
-    @PutMapping("/cases/{id}")
+    @PutMapping("/cases/{id}/like")
     public ResponseEntity<?> likeComment(@PathVariable Integer id, @RequestBody Comment comment) {
         whateverService.likeComment(comment);
         return ResponseEntity.noContent().build();
