@@ -8,13 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @RestController
@@ -32,19 +30,12 @@ public class AccountController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            return ResponseEntity.ok(
-                    userRepository.findByIduser(loginFormService
-                                    .getByLogin(authentication.getName())
-                                    .getIduser()).get()
-            );
-        }
-
-        return ResponseEntity.noContent().build();
+    @GetMapping("/users/{id}/nfts")
+    public ResponseEntity<?> getUserNfts(@PathVariable Integer id) {
+        return ResponseEntity.ok(userRepository.findByIduser(id)
+                .orElseThrow(NoSuchElementException::new)
+                .getIdwalet()
+                .getNfts());
     }
 
     @GetMapping(value = "/orders", produces = MediaType.APPLICATION_JSON_VALUE)

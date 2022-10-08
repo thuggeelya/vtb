@@ -1,0 +1,173 @@
+:root{
+    --tcolor: #151515;
+    --gray-dark: #5b5b5b;
+    --light-gray: #989898;
+    --desccolor: #616161;
+    --primary: #0a57d0;
+}
+body{
+    font-family: 'Fira Sans', sans-serif;
+    color: var(--tcolor);
+}
+.header{
+}
+a{
+    text-decoration:none;
+    color: var(--gray-dark);
+}
+a:hover{
+    text-decoration:none;
+    color: var(--tcolor);
+    transition: 0.2s ease;
+}
+header a{
+    display: block;
+    font-size: 1.1rem;
+}
+.logo{
+    width: 80px;
+}
+button{
+    display: block;
+}
+.x-file{
+    width: 20px;
+    border: none;
+}
+.login-info{
+    color: red;
+}
+h1{
+    color: var(--tcolor);
+}
+.main-title{
+    margin-top: 60px;
+    font-size: 42px;
+}
+.my-nav-item{
+    font-size: 18px;
+    background: none;
+}
+
+
+/*section main user info*/
+
+.main-user-info{
+    background-color: aliceblue;
+}
+.user-logo{
+    background: url("./../img/man-1.png") center no-repeat;
+    background-size: contain;
+    width: 6rem;
+    height: 6rem;
+    padding-left: 8rem;
+}
+.user-progress{
+    width: 60vh;
+}
+.toright{
+    margin-left: -24px;
+}
+.main-user-info .mycount{
+    display: block;
+    margin-left: 10px;
+    font-size: 1.2rem;
+
+    /*width: 40px;*/
+    /*height: 40px;*/
+    /*border: 1px solid var(--primary);*/
+    /*border-radius: 50%;*/
+    color: var(--primary);
+    font-weight: 500;
+    position: relative;
+}
+.walletlogo{
+    width: 40px;
+    height: 40px;
+
+}
+.count_coins{
+    font-size: 17px;
+}
+.wallet{
+    width: 120px;
+}
+.myflex{
+    display: flex !important;
+
+}
+.mystatus{
+    font-size: 1rem;
+    width: 200px;
+    height: 20px;
+}
+.antiblue{
+    background: aliceblue;
+}
+.mywidth{
+    background: aliceblue;
+    width: 9rem;
+    align-items: center;
+    padding-top: 5px;
+    transition: 0.2s ease;
+    box-shadow:0 1rem 3rem rgba(0,0,0,.05)
+}
+.mywidth img{
+
+    width: 7rem;
+}
+.mywidth:hover{
+    transform: scale(1.05);
+    transition: 0.2s ease;
+}
+.vtbnews{
+ color: var(--light-gray);
+}
+
+.footer{
+    background: whitesmoke;
+}
+.mycard{
+    background: aliceblue;
+    height: 250px;
+    border: 2px solid #b1c1ff;
+    border-radius: 10px;
+    transition: all 0.2s ease-in;
+}
+.mycard:hover{
+    border: 3px solid var(--primary);
+    transition: all 0.05s ease-in;
+    color: #09478AFF;
+}
+.data-card-p{
+    font-weight: 500;
+    color: var(--light-gray)
+}
+.car-desc{
+    color: var(--primary);
+}
+.vtbnews h3{
+
+}
+
+
+/*FOOTER*/
+
+
+.logofooter{
+    background: url("./../img/logo.svg") no-repeat;
+    background-size: contain;
+    height: 50px;
+    padding-left: 120px;
+}
+/*footer .myrow{*/
+/*    height: 50px;*/
+/*}*/
+.footerico{
+    margin: 0 auto;
+    height: 50px;
+    justify-content: space-evenly;
+}
+.footerico img{
+    width: 30px;
+}

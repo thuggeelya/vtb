@@ -30,18 +30,20 @@ public class MainInfoController {
     @GetMapping("/roles")
     public ResponseEntity<?> isCurrentUserAdmin() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth);
 
         if (auth == null) {
             return null;
         }
 
         Object principal = auth.getPrincipal();
+        System.out.println(principal);
         LoginForm loginForm = (principal instanceof LoginForm) ? (LoginForm) principal : null;
         System.out.println(loginForm);
 
         if (Objects.nonNull(loginForm)) {
             User user = userRepository.findByIduser(this.loginFormService.
-                    getByLogin(loginForm.getLogin()).getIduser())
+                    getByLogin(loginForm.getUsername()).getIduser())
                     .orElse(null);
 
             if (Objects.nonNull(user)) {

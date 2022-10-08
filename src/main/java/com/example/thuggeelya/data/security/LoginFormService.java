@@ -32,7 +32,7 @@ public class LoginFormService implements UserDetailsService {
     }
 
     public LoginForm getByLogin(String login) {
-        return this.repository.findByLogin(login).orElse(null);
+        return this.repository.findByUsername(login).orElse(null);
     }
 
     @Override
@@ -43,9 +43,9 @@ public class LoginFormService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("User %s is not found", login));
         }
 
-        return new User(loginForm.getLogin(), loginForm.getPassword(), true, true,
+        return new User(loginForm.getUsername(), loginForm.getPassword(), true, true,
                 true, true,
-                new HashSet<>());
+                getAuthorities(new HashSet<>()));
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {

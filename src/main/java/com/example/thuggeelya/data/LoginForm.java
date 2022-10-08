@@ -27,7 +27,8 @@ public class LoginForm implements Serializable {
     @Getter
     private Integer iduser;
     @Getter
-    private String login;
+    @Column(name = "login")
+    private String username;
     @Getter
     private String password;
 //

@@ -1,0 +1,96 @@
+:root{
+	--tcolor: #151515;
+	--gray-dark: #5b5b5b;
+	--light-gray: #989898;
+	--desccolor: #616161;
+	--primary: #09478a;
+}
+body{
+	font-family: 'Fira Sans', sans-serif;
+	color: var(--tcolor);
+}
+
+.header{
+}
+.logo{
+	width: 80px;
+}
+button{
+	display: block;
+}
+.x-file{
+	width: 20px;
+	border: none;
+}
+.login-info{
+	color: red;
+}
+h1{
+	color: var(--tcolor);
+}
+.main-title{
+	margin-top: 60px;
+	font-size: 42px;
+}
+.succesbtn{
+	width: 130px;
+	font-size: 18px;
+}
+.btn-project-font{
+	font-size: 18px;
+}
+.project-item{
+	background: aliceblue;
+	width:100%;
+	height: 400px;
+}
+.mycontainer h2{
+	font-size: 60px;
+}
+.mycontainer{
+	background: white;
+	height: 400px;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+section	{
+	background: whitesmoke;
+}
+.footer{
+	background: whitesmoke;
+}
+.form-control-borderless {
+	border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+/*FOOTER*/
+
+
+.logofooter{
+	background: url("./../img/logo.svg") no-repeat;
+	background-size: contain;
+	height: 50px;
+	padding-left: 120px;
+}
+/*footer .myrow{*/
+/*    height: 50px;*/
+/*}*/
+.footerico{
+	margin: 0 auto;
+	height: 50px;
+	justify-content: space-evenly;
+}
+.footerico img{
+	width: 30px;
+}
+a{
+	text-decoration: none;
+}

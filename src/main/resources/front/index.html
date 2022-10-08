@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gravity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <div class="row pt-5">
+       <div class="col-md-6">
+         <img src="img/logo.svg" alt="logo" class="logo">
+       </div>
+      <div class="offset-md-2 col-md-4 d-flex justify-content-end">
+        <button class="btn signup btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Войти</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5 text-center" id="exampleModalLabel">Вход в ВТБ Онлайн</h3>
+<!--          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><img class="x-file img-fluid" src="img/x-file.png"-->
+<!--                                                                                                         alt="x-file"></button>-->
+        </div>
+        <div class="modal-body">
+          <form id="loginform"  method="POST">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email-адрес</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Пароль</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div id="Help" class="form-text mb-3"><a class=" text-decoration-none" href="#">Забыл пароль</a></div>
+            <button type="submit" class="btn btn-outline-primary w-100" id="btn-login">Войти</button>
+            <p id='login-info' class="login-info text-center mt-2"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="main-description">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <h1 class="main-title">Веб-сервис с элементами геймификации для вовлечения сотрудников Банка ВТБ</h1>
+        <p class="main-desctiption mt-4 mb-3">Главная страница веб-сервиса должна содержать информацию по проекту: цель, участники, механизмы начисления и списания NFT-сертификатов и монет «Digital Ruble», предстоящие активности.</p>
+        <div class="main-people d-flex flex-lg-wrap">
+          <div class="myroundbtn">123456</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="main-gradient  img-fluid rounded">
+          <!--            <img src="img/cryptoruble.jpg" alt="crypto">-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about_us mt-5 pb-5">
+  <div class="container ">
+    <div class="row pt-5">
+      <div class="col-12">
+        <h2 class="text-uppercase text-center mb-5">Как это работает</h2>
+      </div>
+      <div class="col-md-6 col-sm-12 server ">
+        <img src="img/serverroom.jpg" alt="server" class="serverroom shadow-lg rounded img-fluid">
+      </div>
+      <div class="col-md-6 col-sm-12 d-flex align-items-center">
+        <div class="abount-text-wrapp">
+          <h3 class="about-title mt-4">Технология Блокчейна</h3>
+          <p class="about-desc gray-color">Технология блокчейн — это усовершенствованный механизм базы данных, который позволяет организовать открытый обмен информацией в рамках бизнес-сети. База данных блокчейна хранит данные в блоках, связанных между собой в цепочку</p>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6 d-flex align-items-center">
+          <div class="abount-text-wrapp d-flex justify-content-start flex-lg-wrap">
+            <h3 class="about-title mt-4">Цифровой рубль</h3>
+            <p class="about-desc gray-color">Технология блокчейн — это усовершенствованный механизм базы данных, который позволяет организовать открытый обмен информацией в рамках бизнес-сети. База данных блокчейна хранит данные в блоках, связанных между собой в цепочку</p>
+          </div>
+      </div>
+      <div class="col-md-6 "><img src="img/ruble.jpg" alt="server" class=" shadow-lg ruble img-fluid rounded"></div>
+    </div>
+  </div>
+<!--  <div class="line">-->
+<!--    <div class="row pt-5">-->
+<!--      <div class="col-md-8 mx-auto">-->
+<!--        <div class="lineblock"></div>-->
+<!--      </div>-->
+<!--    </div></div>-->
+</section>
+<section class="activity">
+  <div class="container mt-5">
+    <div class="col-12">
+      <h2 class="text-uppercase text-center mb-5 title-style-h2">Виды активностей</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-4  cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 cardsacrivity">
+        <div class="card mb-5">
+          <div class="fillcard "></div>
+          <div class="card-body">
+            <p class="card-text">Событие такое-то</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 cardsacrivity"></div>
+    </div>
+  </div>
+<!--  <div class="line">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-8 mx-auto">-->
+<!--        <div class="lineblock"></div>-->
+<!--      </div>-->
+<!--    </div></div>-->
+</section>
+
+<footer class="footer p-5">
+  <div class="container">
+    <div class="row myrow">
+      <div class="col-md-4">
+        <div class="logofooter">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="footerico d-flex ">
+          <a href="#"><img src="img/vk.png" class='img-fluid' alt=""></a>
+          <a href="#"><img src="img/whatsapp.png" alt=""></a>
+          <a href="#"><img src="img/telegram.png" alt=""></a>
+          <a href="#"><img src="img/odnoklassniki.png" alt=""></a>
+          <a href="#"><img src="img/viber.png" alt=""></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <p class="text-end">ВТБ, 2022</p>
+        <!--                <p>123456, г. Томск</p>-->
+        <!--                <p>Усова 15Б</p>-->
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

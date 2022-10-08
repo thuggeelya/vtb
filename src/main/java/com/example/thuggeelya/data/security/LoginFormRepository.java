@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RepositoryRestResource
 public interface LoginFormRepository extends JpaRepository<LoginForm, Integer> {
-    Optional<LoginForm> findByLogin(@Param("login") String login);
+    Optional<LoginForm> findByUsername(@Param("username") String username);
 
     @PreAuthorize("hasRole('ROLE_ADMIN') || hasRole('ADMIN')")
     @NotNull

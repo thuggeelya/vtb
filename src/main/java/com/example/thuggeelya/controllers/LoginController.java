@@ -37,7 +37,7 @@ public class LoginController {
         System.out.println(loginForm);
 
 
-        return Objects.nonNull(loginForm) ? this.service.getByLogin(loginForm.getLogin()) : null;
+        return Objects.nonNull(loginForm) ? this.service.getByLogin(loginForm.getUsername()) : null;
     }
 
 //    @GetMapping("/loginUser")

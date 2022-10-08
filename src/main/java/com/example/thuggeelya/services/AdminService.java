@@ -68,7 +68,9 @@ public class AdminService {
     }
 
     public User getUserById(Integer iduser) {
-        return userRepository.findByIduser(iduser).orElseThrow(NoSuchElementException::new);
+        User user = userRepository.findByIduser(iduser).orElseThrow(NoSuchElementException::new);
+        System.out.println("got user " + user);
+        return user;
     }
 
     public List<Transaction> getUserTransactionsBySenderId(Integer iduser) {
