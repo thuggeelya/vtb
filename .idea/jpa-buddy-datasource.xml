@@ -3,9 +3,10 @@
   <component name="JpbDataSourceConfig">
     <data-sources>
       <data-source id="71eaca5a-fbe7-4e6f-b66a-f065f3b8613d" name="vtb" url="jdbc:mysql://localhost/vtb?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
+      <data-source id="0f45158e-fbf9-4528-ac9d-d7fafc347eb3" name="sql8524150" url="jdbc:mysql://sql8.freesqldatabase.com/sql8524150?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
     </data-sources>
     <data-source-infos>
-      <data-source-info id="" persistence-unit-name="Default" />
+      <data-source-info id="0f45158e-fbf9-4528-ac9d-d7fafc347eb3" persistence-unit-name="Default" />
     </data-source-infos>
   </component>
 </project>

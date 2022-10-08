@@ -2,9 +2,14 @@
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql">
     <option name="defaultUnitInitialized" value="true" />
-    <option name="reverseEngineeringLastDbConnectionId" value="71eaca5a-fbe7-4e6f-b66a-f065f3b8613d" />
+    <option name="reverseEngineeringLastDbConnectionId" value="0f45158e-fbf9-4528-ac9d-d7fafc347eb3" />
     <option name="reLastEntityCreationPackage" value="src/main/java/com/example/thuggeelya/data" />
-    <option name="newEntityIdType" value="Integer" />
-    <option name="newEntityIdStrategy" value="Identity" />
+    <reUseDbSnapshotConnections>
+      <dbConnection id="0f45158e-fbf9-4528-ac9d-d7fafc347eb3" />
+    </reUseDbSnapshotConnections>
+    <option name="newEntityIdStrategy" />
+    <option name="reIgnoreSlowDbConnections">
+      <ignoreDs id="0f45158e-fbf9-4528-ac9d-d7fafc347eb3" />
+    </option>
   </component>
 </project>
