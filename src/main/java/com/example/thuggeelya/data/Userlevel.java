@@ -16,17 +16,17 @@ import javax.persistence.*;
 public class Userlevel {
     @Id
     @Column(name = "iduser", nullable = false)
-    private Integer iduser;
+    private Integer id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idevel")
+    private Level idevel;
 
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "iduser", nullable = false)
     private User user;
 
-    @Column(name = "nlevel", nullable = false)
-    private Integer nlevel;
-
-    @Column(name = "exp", nullable = false)
-    private Integer exp;
+    @Column(name = "currentexp", nullable = false)
+    private Integer currentexp;
 
 }
