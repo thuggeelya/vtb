@@ -6,7 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
@@ -96,6 +98,14 @@ public class User {
     private Set<User> managers = new LinkedHashSet<>();
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
     private Userlevel userlevel;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "creator")
+    @ToString.Exclude
+    private Activity acase;
+
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "iduser")
+    private List<Comment> comments = new ArrayList<>();
 
     @JsonIgnore
     @JsonBackReference

@@ -49,17 +49,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/auth/login")
                 .permitAll()
-//                .antMatchers("/**")
-                .antMatchers("/info/**")
-                .permitAll()
+                .antMatchers("/**")
+                .authenticated()
                 .antMatchers("/admin/**")
                 .hasRole("ADMIN")
-                .antMatchers("/account/**")
-                .authenticated()
                 .and()
                 .httpBasic()
-                .authenticationEntryPoint(((request, response, e) ->
-                        resolver.resolveException(request, response, null, e)));
+                .authenticationEntryPoint((request, response, e) ->
+                        resolver.resolveException(request, response, null, e));
     }
 
     @Override

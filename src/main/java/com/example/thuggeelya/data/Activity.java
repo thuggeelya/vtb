@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -44,6 +45,10 @@ public class Activity {
 
     @Column(name = "description", length = 45)
     private String description;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "idcreator")
+    private User creator;
 
     @ManyToMany
     @JsonBackReference

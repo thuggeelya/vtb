@@ -32,4 +32,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("update User u set u.idwalet = :idwalet where u.iduser = :iduser")
     void setWaletById(@Param("iduser") Integer iduser, @Param("idwalet") Integer idwalet);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update User u set u.monthrate = monthrate + :inc where u.iduser = :iduser")
+    void incMonthRate(@Param("inc") Integer inc, @Param("iduser") Integer iduser);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update User u set u.monthrate = 1 where u.monthrate > 1")
+    void resetMonthRate();
 }
