@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -76,10 +75,10 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getTransactions());
     }
 
-    @GetMapping("/users")
-    public @ResponseBody
-    List<User> getUsers() {
-        return adminService.getUsers();
+    @CrossOrigin
+    @GetMapping(value = "/users", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getUsers() {
+        return ResponseEntity.ok(adminService.getUsers());
     }
 
     @GetMapping("/users/{id}/transactions")

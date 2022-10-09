@@ -1,6 +1,7 @@
 package com.example.thuggeelya.data;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Userlevel {
     @JoinColumn(name = "idevel")
     private Level idevel;
 
+    @JsonIgnore
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "iduser", nullable = false)

@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
 @Setter
 @ToString
 @AllArgsConstructor

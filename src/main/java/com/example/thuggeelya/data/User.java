@@ -1,6 +1,8 @@
 package com.example.thuggeelya.data;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -12,7 +14,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iduser")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -77,7 +79,7 @@ public class User {
     @OneToMany(mappedBy = "accepter")
     private Set<Transaction> transactionsAsAccepter = new LinkedHashSet<>();
 
-//    @NotFound(action = NotFoundAction.IGNORE)
+    //    @NotFound(action = NotFoundAction.IGNORE)
 //    @JsonIgnore
 //    @org.springframework.data.annotation.Transient
 //    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -118,6 +120,7 @@ public class User {
     @ToString.Exclude
     private Set<Activity> acases = new LinkedHashSet<>();
 
+    @JsonIgnore
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "iduser")
     private List<Comment> comments = new ArrayList<>();

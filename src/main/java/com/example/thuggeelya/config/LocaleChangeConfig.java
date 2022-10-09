@@ -36,7 +36,8 @@ public class LocaleChangeConfig implements WebMvcConfigurer {
                 .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH")
                 .allowedHeaders(HttpHeaders.ACCEPT, HttpHeaders.CONTENT_TYPE)
                 .allowedOrigins("http://localhost:8085")
-                .maxAge(10000L);
+                .maxAge(10000L)
+        ;
     }
 
     @Override
