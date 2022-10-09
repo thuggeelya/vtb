@@ -65,8 +65,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .hasRole("ADMIN")
 //                .antMatchers("/hr/**")
 //                .hasAnyRole("ADMIN", "HR")
-                .anyRequest()
-                .authenticated()
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint((request, response, e) ->
