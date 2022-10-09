@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -76,8 +77,9 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
-        return ResponseEntity.ok(adminService.getUsers());
+    public @ResponseBody
+    List<User> getUsers() {
+        return adminService.getUsers();
     }
 
     @GetMapping("/users/{id}/transactions")
